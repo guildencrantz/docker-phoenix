@@ -1,0 +1,18 @@
+phoenix:
+  build: phoenix
+  hostname: phoenix
+  links:
+    - zookeeper
+  ports:
+    - "60000:60000" # HBase Master API port
+    - "60010:60010" # HBase Master Web UI
+    - "60020:60020" # Regionserver API port
+    - "60030:60030" # HBase Regionserver web UI
+
+zookeeper:
+  build: zookeeper
+  hostname: zookeeper
+  ports:
+    - "2181:2181"
+  command: /zookeeper/bin/zkServer.sh start-foreground
+
